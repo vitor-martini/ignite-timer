@@ -2,10 +2,6 @@ import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
 
-:root {
-  font-size: 62.5%;
-}
-
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +22,6 @@ body {
 body, input, textarea, button {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
-  font-size: 1.6rem;
   line-height: 1.4;
   color: #fff;
   outline: none;
@@ -36,5 +31,4 @@ body, input, textarea, button {
 button {
   cursor: pointer;
 }
-
 `;
