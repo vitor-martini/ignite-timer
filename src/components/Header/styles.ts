@@ -23,7 +23,7 @@ export const HeaderContainer = styled.header`
       color: ${({ theme }) => theme['gray-100']};
       border-top: 3px solid transparent;
       border-bottom: 3px solid transparent;
-      outline: none;
+      box-shadow: none;
 
       &:hover {
         border-bottom: 3px solid ${({ theme }) => theme['green-500']};
