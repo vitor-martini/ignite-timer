@@ -71,6 +71,7 @@ export const CountdownContainer = styled.div`
     background: ${({ theme }) => theme['gray-700']};
     padding: 2rem 1rem;
     border-radius: 8px;
+    font-weight: bold;
   }
 `;
 
@@ -83,7 +84,7 @@ export const Separator = styled.div`
   justify-content: center;
 `;
 
-export const StartCountdownButton = styled.button`
+export const BaseCountDownButton = styled.button`
   width: 100%;
   padding: 1rem;
   border-radius: 8px;
@@ -94,15 +95,26 @@ export const StartCountdownButton = styled.button`
   gap: 0.5rem;
   font-weight: bold;
   font-size: 1.125rem;
-  background-color: ${({ theme }) => theme['green-500']};
   color: ${({ theme }) => theme['gray-100']};
 
   &:disabled {
     opacity: 0.7;
     cursor: not-allowed;
   }
-  
+`;
+
+export const StartCountdownButton = styled(BaseCountDownButton)`
+  background-color: ${({ theme }) => theme['green-500']};
+
   &:not(:disabled):hover {
     background-color: ${({ theme }) => theme['green-700']};
+  }
+`;
+
+export const StopCountdownButton = styled(BaseCountDownButton)`
+  background-color: ${({ theme }) => theme['red-500']};
+
+  &:not(:disabled):hover {
+    background-color: ${({ theme }) => theme['red-700']};
   }
 `;
