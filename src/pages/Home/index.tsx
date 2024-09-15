@@ -14,6 +14,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as zod from 'zod';
 import { useEffect, useState } from 'react';
 import { differenceInSeconds } from 'date-fns';
+import { CyclesContext } from '../../contexts/CyclesContext';
 
 const newCycleFormValidationSchema = zod.object({
   task: zod.string().min(1, 'Informe a tarefa'),
@@ -116,64 +117,66 @@ export function Home() {
   }, [minutes, seconds, activeCycle]);
 
   return ( 
-    <HomeContainer>
-      <form onSubmit={handleSubmit(handleCreateNewCycle)}>
-        <FormContainer>
-          <label htmlFor="task">Vou trabalhar em</label>
-          <TaskInput 
-            id="task" 
-            list="task-suggestions"
-            placeholder="Dê um nome para seu projeto"
-            {...register('task')}
-            disabled={!!activeCycle}
-          />
+    <CyclesContext.Provider value={{ activeCycle }}>
+      <HomeContainer>
+        <form onSubmit={handleSubmit(handleCreateNewCycle)}>
+          <FormContainer>
+            <label htmlFor="task">Vou trabalhar em</label>
+            <TaskInput 
+              id="task" 
+              list="task-suggestions"
+              placeholder="Dê um nome para seu projeto"
+              {...register('task')}
+              disabled={!!activeCycle}
+            />
 
-          <datalist id="task-suggestions">
-            <option value="Projeto 1"/>
-            <option value="Projeto 2"/>
-            <option value="Projeto 3"/>
-            <option value="Banana"/>
-          </datalist>
+            <datalist id="task-suggestions">
+              <option value="Projeto 1"/>
+              <option value="Projeto 2"/>
+              <option value="Projeto 3"/>
+              <option value="Banana"/>
+            </datalist>
 
-          <label htmlFor="minutesAmount">durante</label>
-          <MinutesAmountInput 
-            id="minutesAmount" 
-            type="number" 
-            placeholder="00"
-            step={5}
-            min={5}
-            max={60}
-            {...register('minutesAmount', { valueAsNumber: true })}
-            disabled={!!activeCycle}
-          />
-          <span>minutos.</span>
-        </FormContainer>
+            <label htmlFor="minutesAmount">durante</label>
+            <MinutesAmountInput 
+              id="minutesAmount" 
+              type="number" 
+              placeholder="00"
+              step={5}
+              min={5}
+              max={60}
+              {...register('minutesAmount', { valueAsNumber: true })}
+              disabled={!!activeCycle}
+            />
+            <span>minutos.</span>
+          </FormContainer>
 
-        <CountdownContainer>
-          <span>{minutes[0]}</span>
-          <span>{minutes[1]}</span>
-          <Separator>:</Separator>
-          <span>{seconds[0]}</span>
-          <span>{seconds[1]}</span>
-        </CountdownContainer>
+          <CountdownContainer>
+            <span>{minutes[0]}</span>
+            <span>{minutes[1]}</span>
+            <Separator>:</Separator>
+            <span>{seconds[0]}</span>
+            <span>{seconds[1]}</span>
+          </CountdownContainer>
 
-        {
-          activeCycle ? ( 
-            <StopCountdownButton 
-              type="button"
-              onClick={handleInterruptCycle}
-            >
-              <HandPalm size={24}/>
-              Interromper
-            </StopCountdownButton>
-          ) : (
-            <StartCountdownButton disabled={isSubmitDisabled} type="submit">
-              <Play size={24}/>
-              Começar
-            </StartCountdownButton>
-          )
-        }
-      </form>
-    </HomeContainer>
+          {
+            activeCycle ? ( 
+              <StopCountdownButton 
+                type="button"
+                onClick={handleInterruptCycle}
+              >
+                <HandPalm size={24}/>
+                Interromper
+              </StopCountdownButton>
+            ) : (
+              <StartCountdownButton disabled={isSubmitDisabled} type="submit">
+                <Play size={24}/>
+                Começar
+              </StartCountdownButton>
+            )
+          }
+        </form>
+      </HomeContainer>
+    </CyclesContext.Provider>
   );
 }
