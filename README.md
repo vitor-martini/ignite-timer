@@ -1,50 +1,29 @@
-# React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Ignite Timer Application 
+This project is a **Timer application**  developed using **React**, **TypeScript**, and **Vite**. The project is part of the **Rocketseat Ignite course**. In this project, I followed the instructions and coded it while watching the lessons. The goal was to solidify my understanding of modern web development practices and improve my TypeScript skills.
 
-Currently, two official plugins are available:
+## Features 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Timer to create a focus session.
 
-## Expanding the ESLint configuration
+- History page to view all the sessions.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Tech Stack 
+ 
+- **React** : For building the user interface.
+ 
+- **TypeScript** : To ensure type safety and better code maintenance.
+ 
+- **Vite** : A fast and efficient build tool for modern web applications.
+ 
+- **Date-fns** : To handle date formatting and manipulation.
 
-- Configure the top-level `parserOptions` property like this:
+- **React Hook Form** : For managing form state and validation in an easy and scalable way, providing a simple API for forms and better performance.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **Zod** : For schema-based form validation, ensuring that form inputs adhere to strict data types and rules, enhancing the overall reliability and error handling in the application.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Live Demo
+You can see the live version of this project [here](https://vitor-martini.github.io/ignite-timer).
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Print Screen
+![Home Page](./src/assets/home.png)
