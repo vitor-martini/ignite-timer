@@ -6,3 +6,8 @@ export interface Cycle {
   interruptedDate?: Date; 
   finishedDate?: Date; 
 }
+
+export interface CreateCycleData {
+  task: string;
+  minutesAmount: number;
+}
