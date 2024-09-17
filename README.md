@@ -27,3 +27,4 @@ You can see the live version of this project [here](https://vitor-martini.github
 
 ## Print Screen
 ![Home Page](./src/assets/home.png)
+![History Page](./src/assets/history.png)
