@@ -308,4 +308,4 @@ button {
   display: flex;
   flex-direction: column;
   overflow: auto;
-`;function Px(){return $.jsxs(Cx,{children:[$.jsx(Ex,{}),$.jsx(c_,{})]})}function Nx(){return $.jsx(f_,{children:$.jsxs(ys,{path:"/",element:$.jsx(Px,{}),children:[$.jsx(ys,{path:"/",element:$.jsx(Wk,{})}),$.jsx(ys,{path:"history",element:$.jsx(kx,{})})]})})}function Tx(){return $.jsxs(y1,{theme:w1,children:[$.jsx(lk,{children:$.jsx(w_,{children:$.jsx(Nx,{})})}),$.jsx(k1,{})]})}Pm(document.getElementById("root")).render($.jsx(T.StrictMode,{children:$.jsx(Tx,{})}));
+`;function Px(){return $.jsxs(Cx,{children:[$.jsx(Ex,{}),$.jsx(c_,{})]})}function Nx(){return $.jsx(f_,{children:$.jsxs(ys,{path:"/",element:$.jsx(Px,{}),children:[$.jsx(ys,{path:"/",element:$.jsx(Wk,{})}),$.jsx(ys,{path:"history",element:$.jsx(kx,{})})]})})}function Tx(){return $.jsxs(y1,{theme:w1,children:[$.jsx(lk,{children:$.jsx(w_,{basename:"/ignite-timer",children:$.jsx(Nx,{})})}),$.jsx(k1,{})]})}Pm(document.getElementById("root")).render($.jsx(T.StrictMode,{children:$.jsx(Tx,{})}));
