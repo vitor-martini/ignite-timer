@@ -9,7 +9,7 @@ export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CyclesContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/ignite-timer">
           <Router/>
         </BrowserRouter>
       </CyclesContextProvider>
