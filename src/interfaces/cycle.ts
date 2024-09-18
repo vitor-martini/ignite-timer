@@ -11,3 +11,8 @@ export interface CreateCycleData {
   task: string;
   minutesAmount: number;
 }
+
+export interface CyclesState {
+  cycles: Cycle[];
+  activeCycleId: string | null;
+}

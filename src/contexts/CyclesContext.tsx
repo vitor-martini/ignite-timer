@@ -1,5 +1,15 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useReducer, useState } from 'react';
 import { CreateCycleData, Cycle } from '../interfaces/cycle';
+import { cyclesReducer } from '../reducers/cycles/reducer';
+import { 
+  addNewCycleAction, 
+  interruptCurrentCycleAction, 
+  markCurrentCycleAsFinishedAction 
+} from '../reducers/cycles/actions';
+
+interface CyclesContextProviderProps {
+  children: ReactNode
+}
 
 interface CyclesContextType {
   cycles: Cycle[];
@@ -14,23 +24,17 @@ interface CyclesContextType {
 
 export const CyclesContext = createContext({} as CyclesContextType);
 
-interface CyclesContextProviderProps {
-  children: ReactNode
-}
-
 export function CyclesContextProvider({ children }: CyclesContextProviderProps) {
-  const [cycles, setCycles] = useState<Cycle[]>([]);
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null);
+  const [cyclesState, dispatch] = useReducer(cyclesReducer, {
+    cycles: [],
+    activeCycleId: null,
+  });
+
+  const { cycles, activeCycleId } = cyclesState;
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(0);
 
   function markCurrentCycleAsFinished() {
-    setCycles(state => state.map(cycle => {
-      if(cycle.id === activeCycleId) {
-        return { ...cycle, finishedDate: new Date() };
-      } else {
-        return cycle;
-      }
-    }));
+    dispatch(markCurrentCycleAsFinishedAction());
   }
 
   function setSecondsPassed(seconds: number) {
@@ -45,20 +49,12 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
       startDate: new Date()
     };
  
-    setCycles(state => [...state, newCycle]);
-    setActiveCycleId(newCycle.id);
+    dispatch(addNewCycleAction(newCycle));
     setAmountSecondsPassed(0 );
   }
 
   function interruptCurrentCycle() {
-    setCycles(state => state.map(cycle => {
-      if(cycle.id === activeCycleId) {
-        return { ...cycle, interruptedDate: new Date() };
-      } else {
-        return cycle;
-      }
-    }));
-    setActiveCycleId(null);
+   dispatch(interruptCurrentCycleAction());
   }
 
   const activeCycle = cycles.find(c => c.id === activeCycleId);
